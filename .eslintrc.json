@@ -1,9 +1,19 @@
 {
   "env": {
-    "es2021": true,
-    "commonjs": true,
+    "es2022": true,
     "node": true
   },
   "root": true,
-  "extends": "standard"
+  "extends": "eslint:recommended",
+  "globals": {
+    "nameOfUser": "readonly",
+    "addrOfUser": "writable"
+  },
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": "error"
+  }
 }
