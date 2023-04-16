@@ -4,6 +4,15 @@
     "commonjs": true,
     "node": true
   },
-  "root": true,
-  "extends": "standard"
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/no-set-state": "off"
+  },
+  "root": true
 }
