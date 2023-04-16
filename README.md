@@ -1,36 +1,117 @@
-ES lint
+**Rule Severities**
 
-Use configuration files is to save the file wherever you would like and pass its location to the CLI using the --config option
+"off" or 0 - turn the rule off
+"warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+"error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 
-    eslint -c [> Path to eslint config file] [> file which has to be lint]
+Example
+"rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
+},
 
-*Note:*
-If you are using one configuration file and want ESLint to ignore any .eslintrc.* files, make sure to use --no-eslintrc along with the --config flag.
+**Rules from Plugins**
 
-**Comments in configuration files**
-Both the JSON and YAML configuration file formats support comments
+To configure a rule that is defined within a plugin, prefix the rule ID with the plugin name and /.
 
-**Adding Shared Settings**
-You can add a settings object to the ESLint configuration file and it is supplied to every executed rule
+Example
 
-**Cascading and Hierarchy** (tested)
+{
+"plugins": [
+    "plugin1"
+],
+"rules": {
+    "eqeqeq": "off",
+    "curly": "error",
+    "quotes": ["error", "double"],
+    "plugin1/rule1": "error"
+    }
+}
 
-The configuration cascade works based on the location of the file being linted. If there is an .eslintrc file in the same directory as the file being linted, then that configuration takes precedence. ESLint then searches up the directory structure, merging any .eslintrc files it finds along the way until reaching either an .eslintrc file with root: true or the root directory.
+> Note: When specifying rules from plugins, make sure to omit eslint-plugin-. ESLint uses only the unprefixed name internally to locate rules.
+
+**Disabling Rules**
+
+To disable rule warnings in a part of a file, use *block comments* in the following format:
+
+For Refernce and examples :[https://eslint.org/docs/latest/use/configure/rules#disabling-rules]
 
 
-**Imp Note **
-In the same way, if there is a package.json file in the root directory with an eslintConfig field, the configuration it describes is applied to all subdirectories beneath it. However, the configuration described by the .eslintrc file in the tests/ directory overrides conflicting specifications.
+to disable eslint-plugin-example’s rule-name rule, combine the plugin’s name (example) and the rule’s name (rule-name) into example/rule-name:
 
-home
-└── user
-    └── projectA
-        ├── .eslintrc.json  <- Not used
-        └── lib
-            ├── .eslintrc.json  <- { "root": true }
-            └── main.js
+const name="disable pluguns rules" // eslint-disable-line example/rule-name
+
+**Comment descriptions**
+
+// eslint-disable-next-line no-console -- Here's a description about why this configuration is necessary.
+
+Example:
+
+//eslint-disable-next-line quotes -- double quotes style fine for me
+const lint = "config throuh cli";
+
+/* eslint-disable-next-line no-console --
+ * nedd console for debug
+**/
+console.log("eslint-disable-next-line");
 
 
-**Configuration Based on Glob Patterns**
-note:
-If a config is provided via the --config CLI option, the glob patterns in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the glob patterns in the config are relative to . rather than ./configs.
+**Using configuration files to disbale rules**
+
+ disable rules inside of a configuration file for a group of files, use the overrides key along with a files key
+
+  "overrides": [
+    {
+      "files": ["**/*decode.js"],
+      "excludedFiles": "*parser.js",
+      "rules": {
+        "quotes": ["error", "single"],
+        "no-console": 0
+      }
+    }
+  ]
+
+**To disbale Inline Comments [noInlineConfig] & report unused eslint-disable comments [reportUnusedDisableDirectives] in config files**
+
+{
+"plugins": [
+    "plugin1"
+],
+"rules": {
+    "eqeqeq": "off",
+    "curly": "error",
+    "quotes": ["error", "double"],
+    "plugin1/rule1": "error",
+    "noInlineConfig":0
+    }
+}
+
+Result :Disable all inline config 
+
+Example :
+
+   #####  decode.js
+  //eslint-disable-next-line no-console
+    var name="lint rule not workin for this line"
+    
+    
+
+    console.log("eslint-disable via override proprty ")
+  
+  "overrides": [
+    {
+      "files": ["**/*decode.js"],
+      "excludedFiles": "*parser.js",
+      "rules": {
+        "quotes": ["error", "single"],
+         "no-console": 0,
+        "reportUnusedDisableDirectives": 1
+      }
+
+    }
+  ]
+
+  result :through warning  for *eslint-disable-next-line no-console*
 

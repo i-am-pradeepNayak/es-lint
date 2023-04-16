@@ -11,7 +11,8 @@
     "indent": ["error", 4],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "no-console": "warn"
   },
   "overrides": [
     {
@@ -19,8 +20,10 @@
       "excludedFiles": "*parser.js",
       "rules": {
         "quotes": ["error", "single"],
-        "no-console": "error"
+         "no-console": 0,
+        "reportUnusedDisableDirectives": 1
       }
+
     }
   ]
 }

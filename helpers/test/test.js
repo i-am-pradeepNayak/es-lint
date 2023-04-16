@@ -1,2 +1,2 @@
-const type = 'eslint';
+const type = "eslint";
 console.log(type);
