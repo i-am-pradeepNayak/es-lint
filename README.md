@@ -5,12 +5,14 @@
 "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
 
 Example
+```json
 "rules": {
     "indent": ["error", 4],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"]
 },
+```
 
 **Rules from Plugins**
 
@@ -18,6 +20,7 @@ To configure a rule that is defined within a plugin, prefix the rule ID with the
 
 Example
 
+```json
 {
 "plugins": [
     "plugin1"
@@ -29,6 +32,7 @@ Example
     "plugin1/rule1": "error"
     }
 }
+```
 
 > Note: When specifying rules from plugins, make sure to omit eslint-plugin-. ESLint uses only the unprefixed name internally to locate rules.
 
@@ -49,19 +53,24 @@ const name="disable pluguns rules" // eslint-disable-line example/rule-name
 
 Example:
 
+```javascript
 //eslint-disable-next-line quotes -- double quotes style fine for me
 const lint = "config throuh cli";
+```
 
 /* eslint-disable-next-line no-console --
  * nedd console for debug
 **/
+```javascript
 console.log("eslint-disable-next-line");
+```
 
 
 **Using configuration files to disbale rules**
 
  disable rules inside of a configuration file for a group of files, use the overrides key along with a files key
 
+```json
   "overrides": [
     {
       "files": ["**/*decode.js"],
@@ -72,9 +81,11 @@ console.log("eslint-disable-next-line");
       }
     }
   ]
+```
 
 **To disbale Inline Comments [noInlineConfig] & report unused eslint-disable comments [reportUnusedDisableDirectives] in config files**
 
+```json
 {
 "plugins": [
     "plugin1"
@@ -87,19 +98,23 @@ console.log("eslint-disable-next-line");
     "noInlineConfig":0
     }
 }
+```
 
 Result :Disable all inline config 
 
 Example :
 
-   #####  decode.js
+    $$
+     decode.js
+    $$
+```javascript
   //eslint-disable-next-line no-console
     var name="lint rule not workin for this line"
     
-    
-
     console.log("eslint-disable via override proprty ")
+```
   
+```json
   "overrides": [
     {
       "files": ["**/*decode.js"],
@@ -112,6 +127,7 @@ Example :
 
     }
   ]
+```
 
   result :through warning  for *eslint-disable-next-line no-console*
 
