@@ -1,8 +1,10 @@
-**Rule Severities**
+### Rule Severities
 
-"off" or 0 - turn the rule off
+```markdown
+"off" or 0 - turn the rule off 
 "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
 "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
+```
 
 Example
 ```json
@@ -14,7 +16,7 @@ Example
 },
 ```
 
-**Rules from Plugins**
+### Rules from Plugins
 
 To configure a rule that is defined within a plugin, prefix the rule ID with the plugin name and /.
 
@@ -36,7 +38,7 @@ Example
 
 > Note: When specifying rules from plugins, make sure to omit eslint-plugin-. ESLint uses only the unprefixed name internally to locate rules.
 
-**Disabling Rules**
+### Disabling Rules
 
 To disable rule warnings in a part of a file, use *block comments* in the following format:
 
@@ -47,7 +49,7 @@ to disable eslint-plugin-example’s rule-name rule, combine the plugin’s name
 
 const name="disable pluguns rules" // eslint-disable-line example/rule-name
 
-**Comment descriptions**
+### Comment descriptions
 
 // eslint-disable-next-line no-console -- Here's a description about why this configuration is necessary.
 
@@ -66,7 +68,7 @@ console.log("eslint-disable-next-line");
 ```
 
 
-**Using configuration files to disbale rules**
+### Using configuration files to disbale rules
 
  disable rules inside of a configuration file for a group of files, use the overrides key along with a files key
 
@@ -104,9 +106,8 @@ Result :Disable all inline config
 
 Example :
 
-    $$
-     decode.js
-    $$
+    **In  decode.js**
+
 ```javascript
   //eslint-disable-next-line no-console
     var name="lint rule not workin for this line"
