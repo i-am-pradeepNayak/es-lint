@@ -1,1 +1,1 @@
-const lint = 'confi throuh cli'
+const lint = "confi throuh cli";

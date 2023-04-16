@@ -5,5 +5,22 @@
     "node": true
   },
   "root": true,
-  "extends": "standard"
+  "extends": "standard",
+  "rules": {
+    // enable additional rules
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*decode.js"],
+      "excludedFiles": "*parser.js",
+      "rules": {
+        "quotes": ["error", "single"],
+        "no-console": "error"
+      }
+    }
+  ]
 }
