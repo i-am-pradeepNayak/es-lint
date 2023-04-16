@@ -1,36 +1,33 @@
-ES lint
+**Specifying Globals**
 
-Use configuration files is to save the file wherever you would like and pass its location to the CLI using the --config option
+To configure global variables inside of a configuration file, set the globals configuration property to an object containing keys named for each of the global variables you want to use. For each global variable key, set the corresponding value equal to "writable" to allow the variable to be overwritten or "readonly" to disallow overwriting.
 
-    eslint -c [> Path to eslint config file] [> file which has to be lint]
+For example:
 
-*Note:*
-If you are using one configuration file and want ESLint to ignore any .eslintrc.* files, make sure to use --no-eslintrc along with the --config flag.
+{
+"globals": {
+    "password": "writable",
+    "name": "readonly"
+}
+}
 
-**Comments in configuration files**
-Both the JSON and YAML configuration file formats support comments
+Password can be modified global varibale but name cannot be modified in code
 
-**Adding Shared Settings**
-You can add a settings object to the ESLint configuration file and it is supplied to every executed rule
+**Specifying Parser Options**
 
-**Cascading and Hierarchy** (tested)
+ESLint allows you to specify the JavaScript language options you want to support. By default, ESLint expects ECMAScript 5 syntax. You can override that setting to enable support for other ECMAScript versions and JSX using parser options.
 
-The configuration cascade works based on the location of the file being linted. If there is an .eslintrc file in the same directory as the file being linted, then that configuration takes precedence. ESLint then searches up the directory structure, merging any .eslintrc files it finds along the way until reaching either an .eslintrc file with root: true or the root directory.
+Example
 
-
-**Imp Note **
-In the same way, if there is a package.json file in the root directory with an eslintConfig field, the configuration it describes is applied to all subdirectories beneath it. However, the configuration described by the .eslintrc file in the tests/ directory overrides conflicting specifications.
-
-home
-└── user
-    └── projectA
-        ├── .eslintrc.json  <- Not used
-        └── lib
-            ├── .eslintrc.json  <- { "root": true }
-            └── main.js
+"parserOptions": {
+    "ecmaVersion": "version of ECMAScript syntax you want to use [defalut="5"] ",
+    "sourceType": "module" if your code is is ES modules [defalut="script"] ,
+    "ecmaFeatures": {
+        globalReturn - allow return statements in the global scope
+        impliedStrict - enable global strict mode (if ecmaVersion is 5 or greater)
+        jsx - enable JSX
+    }
+},
 
 
-**Configuration Based on Glob Patterns**
-note:
-If a config is provided via the --config CLI option, the glob patterns in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the glob patterns in the config are relative to . rather than ./configs.
 
