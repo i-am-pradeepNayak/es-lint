@@ -34,7 +34,7 @@ home
 ```
 
 
-## Configuration Based on Glob Patterns## 
+## Configuration Based on Glob Patterns ## 
 note:
 If a config is provided via the --config CLI option, the glob patterns in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the glob patterns in the config are relative to . rather than ./configs.
 
