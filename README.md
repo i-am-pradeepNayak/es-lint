@@ -12,15 +12,15 @@ If you are using one configuration file and want ESLint to ignore any .eslintrc.
 ## Comments in configuration files ## 
 Both the JSON and YAML configuration file formats support comments
 
-## Adding Shared Settings## 
+## Adding Shared Settings ## 
 You can add a settings object to the ESLint configuration file and it is supplied to every executed rule
 
-## Cascading and Hierarchy ##  (tested)
+## Cascading and Hierarchy ##
 
 The configuration cascade works based on the location of the file being linted. If there is an .eslintrc file in the same directory as the file being linted, then that configuration takes precedence. ESLint then searches up the directory structure, merging any .eslintrc files it finds along the way until reaching either an .eslintrc file with root: true or the root directory.
 
 
-**Imp Note**
+### **Imp Note** ### -->
 In the same way, if there is a package.json file in the root directory with an eslintConfig field, the configuration it describes is applied to all subdirectories beneath it. However, the configuration described by the .eslintrc file in the tests/ directory overrides conflicting specifications.
 
 ```markdown
