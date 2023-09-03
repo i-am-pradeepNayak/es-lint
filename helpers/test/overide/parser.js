@@ -1,2 +1,2 @@
 const type = "eslint";
-console.log("hello");
+console.log('hello');

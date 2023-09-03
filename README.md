@@ -1,81 +1,137 @@
-ES lint
+**Configuration File Formats**
 
-Use configuration files is to save the file wherever you would like and pass its location to the CLI using the --config option
+    If there are multiple configuration files in the same directory, ESLint only uses one. The priority order is as follows:
 
-    eslint -c [Path to eslint config file] [file which has to be lint]
+    .eslintrc.js
+    .eslintrc.cjs
+    .eslintrc.yaml
+    .eslintrc.yml
+    .eslintrc.json
+    package.json
 
-*Note:*
-If you are using one configuration file and want ESLint to ignore any .eslintrc.* files, make sure to use --no-eslintrc along with the --config flag.
+**Using Configuration Files**
 
-### Comments in configuration files ###
-Both the JSON and YAML configuration file formats support comments
+    There are two ways to use configuration files.
 
-## Adding Shared Settings ##
-You can add a settings object to the ESLint configuration file and it is supplied to every executed rule
+    1) The first way to use configuration files is via .eslintrc.* and package.json files. ESLint automatically looks for them in the directory of the file to be linted, and in successive parent directories all the way up to the root directory of the filesystem (/), the home directory of the current user (~/), or when root: true is specified
 
-## Cascading and Hierarchy ## 
+    2) The second way to use configuration files is to save the file wherever you would like and pass its location to the CLI using the --config option, such as:
+
+              eslint -c myconfig.json myfiletotest.js
+
+**Comments in configuration files**
+
+    Same as javascript comments  use "//" for comments in configuration files.
+
+**Adding Shared Settings**
+
+    Need to explore more in the future.(pending)
+
+**Cascading and Hierarchy**
 
 The configuration cascade works based on the location of the file being linted. If there is an .eslintrc file in the same directory as the file being linted, then that configuration takes precedence. ESLint then searches up the directory structure, merging any .eslintrc files it finds along the way until reaching either an .eslintrc file with root: true or the root directory.
 
-
-> **Imp Note**
-In the same way, if there is a package.json file in the root directory with an eslintConfig field, the configuration it describes is applied to all subdirectories beneath it. However, the configuration described by the .eslintrc file in the tests/ directory overrides conflicting specifications.
+ESLint stops looking in parent folders once it finds a configuration with "root": true.
 
 home
 └── user
-    └── projectA
-        ├── .eslintrc.json  <- Not used
-        └── lib
-            ├── .eslintrc.json  <- { "root": true }
-            └── main.js
+└── projectA
+├── .eslintrc.json <- it will be not used because we declarecd root true in below
+└── lib
+├── .eslintrc.json <- { "root": true }
+└── main.js
 
-### Configuration Based on Glob Patterns ###
+**Extending Configuration Files**
 
-# how overrides work in a configuration file #
+     A configuration file, once extended, can inherit all the  rules, plugins, and language options of another configuration file. It will merge with derived config file if exist.Derived config rules has higher precedence.
+
+     we can extends shareable config file via npm
+
+**Using a shareable configuration package** (extends property)
+
+    A sharable configuration is an npm package that exports a configuration object
+
+Note: The extends property value can omit the eslint-config- prefix of the package name.
+
+    ```markdown
+     syntax ->  extends : ["packageName1","packageName2"]
+    ```
+
+**Using a configuration from a plugin**
+
+    it adds more functionality and various extension
+    NOTE :The plugins property value can omit the eslint-plugin- prefix of the package name.
+
+    syntax:
+
+```json
+     plugins :[pluginName1,pluginName2]
+
+   using plugin we can extends rules.The extends property look like this 
+ 
+    extends : [ pulginName/packagename ]
+```
+
+    example :
+```console
+    "plugins": [
+        "react"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+```
+
+
+**Configuration Based on Glob Patterns**
+
+   using the overrides key we can apply addition rule that having having higher precedence compare to regular configuration will apply for specific files mentioned inside overrides files and exludes file property  
+
+   How overrides work:
+     
+     [  https://eslint.org/docs/latest/use/configure/configuration-files#how-do-overrides-work](https://)
+
+
+sample tested es lint file
 
 ```json
 {
-  "rules": {
-    "quotes": ["error", "double"]
-  },
+    "extends": "eslint:recommended",
+    "root":true,  //main directory lint config rules will not mergerd
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6":true
+      },
+    "rules": {
+        // enable additional rules
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
 
-  "overrides": [
-    {
-      "files": ["bin/*.js", "lib/*.js"],
-      "excludedFiles": "*.test.js",
-      "rules": {
-        "quotes": ["error", "single"]
-      }
-    }
-  ]
+        // override configuration set by extending "eslint:recommended"
+        "no-empty": "warn",
+        "no-cond-assign": ["error", "always"],
+
+        // disable rules from base configurations
+         "for-direction": "off"
+    },
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "overrides": [
+        {
+          "files": ["*Handler.js"],
+          "excludedFiles": "*Errors.js",
+          "rules": {
+            "quotes": ["error", "double"]
+          }
+        }
+      ]
 }
 ```
-```markdown
-The patterns are applied against the file path relative to the directory of the config file. For example, if your config file has the path /Users/john/workspace/any-project/.eslintrc.js and the file you want to lint has the path /Users/john/workspace/any-project/lib/util.js, then the pattern provided in .eslintrc.js is executed against the relative path lib/util.js.
-```
 
-for more rules :
-[https://eslint.org/docs/latest/use/configure/configuration-files#how-do-overrides-work]
-
-
-> note:
-If a config is provided via the --config CLI option, the glob patterns in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the glob patterns in the config are relative to . rather than ./configs.
-
-### Using a shareable configuration package ###
-
-A sharable configuration is an npm package that exports a configuration object. Make sure that you have installed the package in your project root directory, so that ESLint can require it.
-
-The extends property value can omit the [eslint-config] prefix of the package name.
-
-The npm init @eslint/config command can create a configuration so you can extend a popular style guide (for example, [eslint-config-standard] ).
-
->steps
-```javascript
- npm i eslint-config-standard
-```
-
- in config file,extends property value can be
-  "extends": ["standard"] or  "extends": ["eslint-config-standard"] 
 
 
 

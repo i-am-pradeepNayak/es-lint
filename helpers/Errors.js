@@ -22,7 +22,7 @@ class MissingAPIKeyError extends Error {
 class InvalidAPIKeyError extends Error {
     constructor (message) {
         super(message);
-        this.name = "InvalidAPIKeyError";
+        this.name = 'InvalidAPIKeyError';
     }
 }
 

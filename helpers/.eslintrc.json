@@ -1,0 +1,34 @@
+{
+    "extends": "eslint:recommended",
+    "root":true,  //main directory lint config rules will not mergerd
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6":true
+      },
+    "rules": {
+        // enable additional rules
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+
+        // override configuration set by extending "eslint:recommended"
+        "no-empty": "warn",
+        "no-cond-assign": ["error", "always"],
+
+        // disable rules from base configurations
+         "for-direction": "off"
+    },
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "overrides": [
+        {
+          "files": ["*Handler.js"],
+          "excludedFiles": "*Errors.js",
+          "rules": {
+            "quotes": ["error", "double"]
+          }
+        }
+      ]
+}
