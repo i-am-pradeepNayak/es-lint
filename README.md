@@ -1,17 +1,31 @@
 **Specifying Globals**
 
-To configure global variables inside of a configuration file, set the globals configuration property to an object containing keys named for each of the global variables you want to use. For each global variable key, set the corresponding value equal to "writable" to allow the variable to be overwritten or "readonly" to disallow overwriting.
+    To configure global variables inside of a configuration file, set the globals configuration property to an object containing keys named for each of the global variables you want to use. For each global variable key, set the corresponding value equal to "writable" to allow the variable to be overwritten or "readonly" to disallow overwriting.
+
+    we can use global variable disabled by setting their value to "off"
+
+   3 values we can use ["off" ,"readonly","writeonly"]
 
 For example:
 
-{
-"globals": {
-    "password": "writable",
-    "name": "readonly"
-}
-}
+ "globals": {
+    "nameOfUser": "readonly",
+    "Promise": "off"
+  },
 
-Password can be modified global varibale but name cannot be modified in code
+Password can be modified global varibale but nameofUser cannot be modified in code.
+
+
+**using plugin we can import global variables of plugin**
+
+  syntax :
+    {
+        "plugins": ["example"],
+        "env": {
+            "example/custom": true
+        }
+    }
+
 
 **Specifying Parser Options**
 
@@ -19,7 +33,7 @@ ESLint allows you to specify the JavaScript language options you want to support
 
 Example
 
-"parserOptions": {
+`"parserOptions": {
     "ecmaVersion": "version of ECMAScript syntax you want to use [defalut="5"] ",
     "sourceType": "module" if your code is is ES modules [defalut="script"] ,
     "ecmaFeatures": {
@@ -27,7 +41,7 @@ Example
         impliedStrict - enable global strict mode (if ecmaVersion is 5 or greater)
         jsx - enable JSX
     }
-},
+},`
 
 
 
