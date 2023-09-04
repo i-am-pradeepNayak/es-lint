@@ -15,14 +15,14 @@ class TrialUsageOver extends Error {
 class MissingAPIKeyError extends Error {
     constructor (message) {
         super(message);
-        this.name = "MissingAPIKeyError";
+        this.name = 'MissingAPIKeyError'; // eslint-disable-line quotes
     }
 }
 
 class InvalidAPIKeyError extends Error {
     constructor (message) {
         super(message);
-        this.name = "InvalidAPIKeyError";
+        this.name = 'InvalidAPIKeyError';
     }
 }
 

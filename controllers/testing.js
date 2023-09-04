@@ -2,8 +2,8 @@ const {
     readCsvFile,
     writeToCsvFile,
     mergeCsvFileData
-} = require("../helpers/csvHandler");
-const { utfDecoder } = require("../helpers/textEncoder");
+} = require('../helpers/csvHandler');
+const { utfDecoder } = require('../helpers/textEncoder');
 
 const csvController = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ const csvController = async (req, res) => {
 
         const modifiedAddr = csvData.map((data) => {
             const str = data.Registered_Office_Address;
-            const str2 = str.replaceAll(/\\/g, "\\");
+            const str2 = str.replaceAll(/\\/g, '\\');
 
             data.Registered_Office_Address = utfDecoder(str2);
 
@@ -24,7 +24,7 @@ const csvController = async (req, res) => {
 
         res
             .status(201)
-            .json({ msg: "Data successfully append to excel file", data: csvData });
+            .json({ msg: 'Data successfully append to excel file', data: csvData });
     } catch (e) {
         console.log(e);
     }
@@ -37,7 +37,7 @@ const mergeCsvFile = async (req, res) => {
         const mergedData = await mergeCsvFileData(files);
 
         res.status(201).json({
-            msg: "csv file merged successfully",
+            msg: 'csv file merged successfully',
             mergedData
         });
     } catch (e) {
@@ -47,7 +47,7 @@ const mergeCsvFile = async (req, res) => {
 
 const checkUp = (req, res) => {
     try {
-        res.status(201).json("api working");
+        res.status(201).json('api working');
     } catch (e) {
         console.log(e);
     }

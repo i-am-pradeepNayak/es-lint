@@ -10,20 +10,18 @@
     // enable additional rules
     "indent": ["error", 4],
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "no-console": "warn"
+    "semi": ["error", "always"]
   },
+  "noInlineConfig": true,  //disable all inline rules or config
   "overrides": [
     {
-      "files": ["**/*decode.js"],
-      "excludedFiles": "*parser.js",
+      "files": ["*helpers/**"],
+      "excludedFiles": "*decode.js",
       "rules": {
-        "quotes": ["error", "single"],
-         "no-console": 0,
-        "reportUnusedDisableDirectives": 1
-      }
-
+        "no-console": 2,
+        "quotes": ["error", "double"]
+      },
+      "reportUnusedDisableDirectives": true   //shows unused inline rules
     }
   ]
 }

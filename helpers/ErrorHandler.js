@@ -15,11 +15,14 @@ const {
 } = require("./Errors");
 
 const errorHandler = (e) => {
+    // eslint-disable-next-line no-console
+    console.log(e);
     switch (e.constructor) {
     case ZeroCreditError:
         return { status: 403, errorType: "ZeroCreditError", showErrToUser: true };
 
     case TrialUsageOver:
+        // eslint-disable-next-line no-console
         return { status: 403, errorType: "TrialUsageOver", showErrToUser: true };
 
     case LessCreditError:
@@ -79,5 +82,6 @@ const errorHandler = (e) => {
         return { status: 404, showErrToUser: false };
     }
 };
+console.log("Error Handler");
 
 module.exports = errorHandler;

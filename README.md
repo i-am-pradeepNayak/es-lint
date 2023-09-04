@@ -44,6 +44,23 @@ To disable rule warnings in a part of a file, use *block comments* in the follow
 
 For Refernce and examples :[https://eslint.org/docs/latest/use/configure/rules#disabling-rules]
 
+There are serveral types to disbale rules
+ 
+```javascript
+alert('foo'); // eslint-disable-line no-alert, quotes, semi
+
+// eslint-disable-next-line no-alert, quotes, semi
+alert('foo');
+
+/* eslint-disable quotes, semi */
+alert('foo');
+/* eslint-enable quotes, semi */
+
+/* eslint-disable no-alert, no-console */
+alert('foo');
+/* eslint-enable */
+```
+
 
 to disable eslint-plugin-example’s rule-name rule, combine the plugin’s name (example) and the rule’s name (rule-name) into example/rule-name:
 
@@ -59,11 +76,9 @@ Example:
 //eslint-disable-next-line quotes -- double quotes style fine for me
 const lint = "config throuh cli";
 ```
-
-/* eslint-disable-next-line no-console --
- * nedd console for debug
-**/
+Need console for debug
 ```javascript
+// eslint-disable-next-line no-console 
 console.log("eslint-disable-next-line");
 ```
 
@@ -130,5 +145,36 @@ Example :
   ]
 ```
 
-  result :through warning  for *eslint-disable-next-line no-console*
+  Result :Throw warning  for "eslint-disable-next-line no-console"  because it is not used or effected in next line
 
+sample es lint code 
+
+```json
+{
+  "env": {
+    "es2021": true,
+    "commonjs": true,
+    "node": true
+  },
+  "root": true,
+  "extends": "standard",
+  "rules": {
+    // enable additional rules
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"]
+  },
+  "noInlineConfig": true,  //disable all inline rules or config
+  "overrides": [
+    {
+      "files": ["*helpers/**"],
+      "excludedFiles": "*decode.js",
+      "rules": {
+        "no-console": 2,
+        "quotes": ["error", "double"]
+      },
+      "reportUnusedDisableDirectives": true   //shows unused inline rules
+    }
+  ]
+}
+```
