@@ -70,11 +70,11 @@ NOTE :The plugins property value can omit the eslint-plugin- prefix of the packa
 syntax:
 
 ```json
-    plugins :[pluginName1,pluginName2]
+    plugins :[ "pluginName1","pluginName2"]
 
    using plugin we can extends rules.The extends property look like this 
  
-    extends : [ pulginName/packagename ]
+    extends : [ "pulginName/packagename" ]
 ```
 
 example :
