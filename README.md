@@ -1,13 +1,13 @@
 **Configuration File Formats**
 
-    If there are multiple configuration files in the same directory, ESLint only uses one. The priority order is as follows:
+If there are multiple configuration files in the same directory, ESLint only uses one. The priority order is as follows:
 
-    .eslintrc.js
-    .eslintrc.cjs
-    .eslintrc.yaml
-    .eslintrc.yml
-    .eslintrc.json
-    package.json
+`.eslintrc.js
+.eslintrc.cjs
+.eslintrc.yaml
+.eslintrc.yml
+.eslintrc.json
+package.json`
 
 **Using Configuration Files**
 
