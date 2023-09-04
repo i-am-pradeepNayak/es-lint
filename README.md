@@ -44,7 +44,7 @@ To disable rule warnings in a part of a file, use *block comments* in the follow
 
 For Refernce and examples :[https://eslint.org/docs/latest/use/configure/rules#disabling-rules]
 
-There are serveral types to disbale rules
+There are serveral types to disable rules
  
 ```javascript
 alert('foo'); // eslint-disable-line no-alert, quotes, semi
@@ -64,7 +64,9 @@ alert('foo');
 
 to disable eslint-plugin-example’s rule-name rule, combine the plugin’s name (example) and the rule’s name (rule-name) into example/rule-name:
 
+```javascript
 const name="disable pluguns rules" // eslint-disable-line example/rule-name
+```
 
 ### Comment descriptions
 
