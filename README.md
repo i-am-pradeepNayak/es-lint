@@ -61,7 +61,7 @@ More info :[https://eslint.org/docs/latest/use/configure/plugins#specify-a-proce
 ```
 
 
-Sample es lint code 
+Sample plugin naming convention or calling method
 
 ```json
 {
@@ -87,5 +87,39 @@ Sample es lint code
   }
 }
 ```
+
+
+ES lint code 
+
+```json
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": ["github", "unicorn"],
+  "extends": ["plugin:github/recommended", "plugin:unicorn/all"],
+  "rules": {
+    "unicorn/prefer-module": 1,
+    "no-console": 1
+  }
+  // ,
+//   "overrides": [
+//     {
+//         "files": ["*.md"],
+//         "processor": "github/markdown"  //this processor will not work just for ref
+//     },
+//     {
+//         "files": ["**/*.md/*.js"],
+//         "rules": {
+//             "strict": "off"
+//         }
+//     }
+// ]
+}
+```
+
 
 

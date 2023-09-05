@@ -11,4 +11,17 @@
     "unicorn/prefer-module": 1,
     "no-console": 1
   }
+  // ,
+//   "overrides": [
+//     {
+//         "files": ["*.md"],
+//         "processor": "github/markdown"  //this processor will not work just for ref
+//     },
+//     {
+//         "files": ["**/*.md/*.js"],
+//         "rules": {
+//             "strict": "off"
+//         }
+//     }
+// ]
 }
