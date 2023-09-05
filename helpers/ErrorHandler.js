@@ -17,7 +17,7 @@ const {
 const errorHandler = (e) => {
     switch (e.constructor) {
     case ZeroCreditError:
-        return { status: 403, errorType: "ZeroCreditError", showErrToUser: true };
+        return { status: 403, errorType: 'ZeroCreditError', showErrToUser: true };
 
     case TrialUsageOver:
         return { status: 403, errorType: "TrialUsageOver", showErrToUser: true };
