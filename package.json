@@ -11,8 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-recommended": "^4.1.0",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-unicorn": "^48.0.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-group-routes": "^1.1.0",
@@ -21,6 +25,7 @@
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "eslint": "^8.38.0",
+    "eslint-plugin-github": "^4.10.0"
   }
 }

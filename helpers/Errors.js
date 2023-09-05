@@ -1,100 +1,141 @@
 class ZeroCreditError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "ZeroCreditError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "ZeroCreditError";
     }
+
 }
 
 class TrialUsageOver extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "TrialUsageOver";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "TrialUsageOver";
+    }
+
 }
 
 class MissingAPIKeyError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "MissingAPIKeyError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "MissingAPIKeyError";
     }
+
 }
 
 class InvalidAPIKeyError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "InvalidAPIKeyError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "InvalidAPIKeyError";
     }
+
 }
 
 class InvalidUserGroupError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "InvalidUserGroupError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "InvalidUserGroupError";
     }
+
 }
 
 class ServiceError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "ServiceError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "ServiceError";
     }
+
 }
 
 class RequestError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "RequestError";
+
+    constructor (message) {
+
+        super(message);
+        this.name = "RequestError";
     }
+
 }
 
 class DataParseError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "DataParseError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "DataParseError";
+    }
+
 }
 
-  class InvalidRequestError extends Error{
-    constructor(message){
-      super(message);
-      this.name = "InvalidRequestError"
+class InvalidRequestError extends Error {
+
+    constructor (message) {
+
+        super(message);
+        this.name = "InvalidRequestError";
     }
+
 }
 
 class LessCreditError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "LessCreditError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "LessCreditError";
+    }
+
 }
 
 class BadRequestError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "BadRequestError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "BadRequestError";
+    }
+
 }
 
-
 class UnAuthorizedError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "UnAuthorizedError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "UnAuthorizedError";
+    }
+
 }
 
 class FileUploadError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "FileUploadError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "FileUploadError";
+    }
+
 }
 
 class NotAdminError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "NotAdminError";
-  }
+
+    constructor (message) {
+
+        super(message);
+        this.name = "NotAdminError";
+    }
+
 }
 
 module.exports = {
@@ -111,5 +152,5 @@ module.exports = {
     UnAuthorizedError,
     TrialUsageOver,
     FileUploadError,
-    NotAdminError
+    NotAdminError,
 };
