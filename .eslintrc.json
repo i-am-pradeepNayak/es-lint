@@ -6,22 +6,22 @@
   },
   "root": true,
   "extends": "standard",
+  "ignorePatterns": ["helpers/**/test.js"],
   "rules": {
     // enable additional rules
     "indent": ["error", 4],
+    "no-console": 1,
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"]
   },
-  "noInlineConfig": true,  //disable all inline rules or config
   "overrides": [
     {
       "files": ["*helpers/**"],
-      "excludedFiles": "*decode.js",
+      // "excludedFiles": "decode.js",
       "rules": {
         "no-console": 2,
         "quotes": ["error", "double"]
-      },
-      "reportUnusedDisableDirectives": true   //shows unused inline rules
+      }
     }
   ]
 }

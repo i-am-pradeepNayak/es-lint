@@ -1,20 +1,64 @@
-### Configure a Parser
+### Ignore Files
+ 
+ There are 2 ways to ignore file
 
-Custom parsers convert JavaScript code into an abstract syntax tree for ESLint to evaluate.By default parser package is espree
+1) Add ignorePatterns to a configuration file.
+2) Creating .eslintignore in directory.
 
-we have to  install the parser package separately using npm.
 
-stntax:
+
+Step 1:=>
+    In .eslintrc.json config file add `ignorePatterns`  
+
+Example :
 
 ```json
-{
-    "parser": "@typescript-eslint/parser",
+    {
+    "ignorePatterns": ["glob patterns or file Names"],
     "rules": {
-        "semi": "error"
+        //...
     }
 }
 ```
 
+
 ```console
-Note : when using a custom parser, the parserOptions configuration property is still required for ESLint to work properly with features not in ECMAScript 5 by default.
+Note :If a config is provided via the --config CLI option, the ignore patterns that start with / in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the ignore patterns in the config are relative to . rather than ./configs.
 ```
+
+Step 2 :=> The .eslintignore File
+  
+```markdown
+decode.js
+ #negated pattern or negated igonore rule(!)
+!.build
+.build/*
+!.build/app.controller.js
+```
+
+
+> Imp notes
+    Patterns defined in .eslintignore take precedence over the ignorePatterns property of config files.
+
+we can pass ignore files or pattern through command line [with multiple args]
+
+   ` npx eslint --ignore-pattern /lib/ --ignore-pattern /src/vendor/* file.js ` 
+
+**--no-ignore**  flag disables excluding of files from .eslintignore files, --ignore-path flags, --ignore-pattern flags, and the ignorePatterns property in config files.
+
+    `npx eslint --no-ignore file.js`
+
+
+> Note :
+.eslintignore file follows some implicit rules 
+1) node modules
+2) .dot files and folder 
+
+There are also some exceptions to these rules for 
+for more ref [(https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file)](https://)
+
+
+
+
+
+ 

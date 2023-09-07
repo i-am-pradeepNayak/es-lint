@@ -1,0 +1,5 @@
+decode.js
+# negated pattern or negated igonore rule(!)
+!.build
+.build/*
+!.build/app.controller.js

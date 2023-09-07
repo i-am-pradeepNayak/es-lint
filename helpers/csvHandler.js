@@ -10,6 +10,7 @@ const readCsvFile = (data) =>
                 csvData.push(data);
             })
             .on("end", () => {
+                console.log(csvData);
                 resolve(csvData);
             });
     });
