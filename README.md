@@ -56,6 +56,56 @@ There are also some exceptions to these rules for
 for more ref [(https://eslint.org/docs/latest/use/configure/ignore#the-eslintignore-file)](https://)
 
 
+sample es line config
+
+```json
+{
+  "env": {
+    "es2021": true,
+    "commonjs": true,
+    "node": true
+  },
+  "root": true,
+  "extends": "standard",
+  "ignorePatterns": ["*decode.js"],  //it will ignore all file name with decode.js
+  "rules": {
+    // enable additional rules
+    "indent": ["error", 4],
+    "no-console": 1,
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"]
+  },
+  "overrides": [
+    {
+      "files": ["helpers/**"],
+      "rules": {
+        "no-console": 2
+      }
+    },
+    {
+      "files": ["helpers/test/override/**"],
+      "rules": {
+        "no-console": 0,
+        "quotes": [1, "single"]
+      }
+    }
+  ]
+}
+```
+
+.eslintignore code
+
+```css
+/*decode.js
+# negated pattern or negated igonore rule(!)
+!.build
+.build/*
+!.build/app.controller.js
+```
+
+
+
+
 
 
 
