@@ -1,4 +1,4 @@
-decode.js
+/*decode.js
 # negated pattern or negated igonore rule(!)
 !.build
 .build/*
