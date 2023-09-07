@@ -6,7 +6,7 @@
   },
   "root": true,
   "extends": "standard",
-  "ignorePatterns": ["helpers/**/test.js"],
+  "ignorePatterns": ["*decode.js"],  //it will ignore all file name with decode.js
   "rules": {
     // enable additional rules
     "indent": ["error", 4],
@@ -16,11 +16,16 @@
   },
   "overrides": [
     {
-      "files": ["*helpers/**"],
-      // "excludedFiles": "decode.js",
+      "files": ["helpers/**"],
       "rules": {
-        "no-console": 2,
-        "quotes": ["error", "double"]
+        "no-console": 2
+      }
+    },
+    {
+      "files": ["helpers/test/override/**"],
+      "rules": {
+        "no-console": 0,
+        "quotes": [1, "single"]
       }
     }
   ]

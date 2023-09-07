@@ -7,7 +7,7 @@
 
 
 
-Step 1:=>
+#### Step 1:=>
     In .eslintrc.json config file add `ignorePatterns`  
 
 Example :
@@ -21,12 +21,10 @@ Example :
 }
 ```
 
+> Note :If a config is provided via the --config CLI option, the ignore patterns that start with / in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the ignore patterns in the config are relative to . rather than ./configs.
 
-```console
-Note :If a config is provided via the --config CLI option, the ignore patterns that start with / in the config are relative to the current working directory rather than the base directory of the given config. For example, if --config configs/.eslintrc.json is present, the ignore patterns in the config are relative to . rather than ./configs.
-```
 
-Step 2 :=> The .eslintignore File
+#### Step 2 :=> The .eslintignore File
   
 ```markdown
 decode.js
@@ -40,14 +38,14 @@ decode.js
 > Imp notes
     Patterns defined in .eslintignore take precedence over the ignorePatterns property of config files.
 
-we can pass ignore files or pattern through command line [with multiple args]
+#### We can pass ignore files or pattern through command line [with multiple args]
 
-   ` npx eslint --ignore-pattern /lib/ --ignore-pattern /src/vendor/* file.js ` 
+`npx eslint --ignore-pattern /lib/ --ignore-pattern /src/vendor/* file.js` 
 
 **--no-ignore**  flag disables excluding of files from .eslintignore files, --ignore-path flags, --ignore-pattern flags, and the ignorePatterns property in config files.
 
-    `npx eslint --no-ignore file.js`
-
+`npx eslint --no-ignore file.js` 
+    
 
 > Note :
 .eslintignore file follows some implicit rules 

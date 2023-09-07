@@ -2,14 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const app = express();
 
 /* eslint-disable quotes,no-unused-vars */
-const name = 'pradeep';
+const name = "pradeep";
 /* eslint-enable */
-
-const name1 = 'pradeep';
 
 app.use(express.json({ limit: '500mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -18,7 +17,7 @@ app.use(cors());
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

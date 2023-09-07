@@ -25,9 +25,7 @@ const csvController = async (req, res) => {
         res
             .status(201)
             .json({ msg: 'Data successfully append to excel file', data: csvData });
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 };
 
 const mergeCsvFile = async (req, res) => {
@@ -40,17 +38,13 @@ const mergeCsvFile = async (req, res) => {
             msg: 'csv file merged successfully',
             mergedData
         });
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 };
 
 const checkUp = (req, res) => {
     try {
         res.status(201).json('api working');
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 };
 
 module.exports = { csvController, checkUp, mergeCsvFile };

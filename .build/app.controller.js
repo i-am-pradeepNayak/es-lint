@@ -1,8 +1,8 @@
-class App  {
+class App extends Error {
     constructor (message) {
         super(message);
-        this.name = "App class Not found";
+        this.name = 'App class Not found';
     }
 }
 
-module.exports={App}
+module.exports = { App };

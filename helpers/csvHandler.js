@@ -1,16 +1,15 @@
-const csv = require("fast-csv");
-const fs = require("fs");
+const csv = require('fast-csv');
+const fs = require('fs');
 
 const readCsvFile = (data) =>
     new Promise((resolve, reject) => {
         const csvData = [];
         csv
             .parseString(data, { headers: true })
-            .on("data", (data) => {
+            .on('data', (data) => {
                 csvData.push(data);
             })
-            .on("end", () => {
-                console.log(csvData);
+            .on('end', () => {
                 resolve(csvData);
             });
     });
@@ -18,7 +17,7 @@ const readCsvFile = (data) =>
 const writeToCsvFile = (data) =>
     new Promise((resolve) => {
     // Create a writable stream to the CSV file
-        const writableStream = fs.createWriteStream("output.csv");
+        const writableStream = fs.createWriteStream('output.csv');
 
         // Create a CSV writer
         const csvWriter = csv.format({ headers: true });
@@ -29,8 +28,8 @@ const writeToCsvFile = (data) =>
         csvWriter.end();
 
         // Listen for the 'finish' event to know when the write operation is complete
-        writableStream.on("finish", () => {
-            resolve("Data written to file successfully.");
+        writableStream.on('finish', () => {
+            resolve('Data written to file successfully.');
         });
     });
 
@@ -41,10 +40,10 @@ const mergeCsvFileData = (csvFiles) => {
                 const dataArray = [];
                 return csv
                     .parseString(file.data, { headers: true })
-                    .on("data", (data) => {
+                    .on('data', (data) => {
                         dataArray.push(data);
                     })
-                    .on("end", function () {
+                    .on('end', function () {
                         resolve(dataArray);
                     });
             });

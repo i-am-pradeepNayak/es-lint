@@ -1,14 +1,14 @@
 class ZeroCreditError extends Error {
     constructor (message) {
         super(message);
-        this.name = "ZeroCreditError";
+        this.name = 'ZeroCreditError';
     }
 }
 
 class TrialUsageOver extends Error {
     constructor (message) {
         super(message);
-        this.name = "TrialUsageOver";
+        this.name = 'TrialUsageOver';
     }
 }
 
@@ -22,77 +22,77 @@ class MissingAPIKeyError extends Error {
 class InvalidAPIKeyError extends Error {
     constructor (message) {
         super(message);
-        this.name = "InvalidAPIKeyError";
+        this.name = 'InvalidAPIKeyError';
     }
 }
 
 class InvalidUserGroupError extends Error {
     constructor (message) {
         super(message);
-        this.name = "InvalidUserGroupError";
+        this.name = 'InvalidUserGroupError';
     }
 }
 
 class ServiceError extends Error {
     constructor (message) {
         super(message);
-        this.name = "ServiceError";
+        this.name = 'ServiceError';
     }
 }
 
 class RequestError extends Error {
     constructor (message) {
         super(message);
-        this.name = "RequestError";
+        this.name = 'RequestError';
     }
 }
 
 class DataParseError extends Error {
     constructor (message) {
         super(message);
-        this.name = "DataParseError";
+        this.name = 'DataParseError';
     }
 }
 
 class InvalidRequestError extends Error {
     constructor (message) {
         super(message);
-        this.name = "InvalidRequestError";
+        this.name = 'InvalidRequestError';
     }
 }
 
 class LessCreditError extends Error {
     constructor (message) {
         super(message);
-        this.name = "LessCreditError";
+        this.name = 'LessCreditError';
     }
 }
 
 class BadRequestError extends Error {
     constructor (message) {
         super(message);
-        this.name = "BadRequestError";
+        this.name = 'BadRequestError';
     }
 }
 
 class UnAuthorizedError extends Error {
     constructor (message) {
         super(message);
-        this.name = "UnAuthorizedError";
+        this.name = 'UnAuthorizedError';
     }
 }
 
 class FileUploadError extends Error {
     constructor (message) {
         super(message);
-        this.name = "FileUploadError";
+        this.name = 'FileUploadError';
     }
 }
 
 class NotAdminError extends Error {
     constructor (message) {
         super(message);
-        this.name = "NotAdminError";
+        this.name = 'NotAdminError';
     }
 }
 
