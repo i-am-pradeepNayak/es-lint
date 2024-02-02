@@ -2,7 +2,7 @@
 
 If there are multiple configuration files in the same directory, ESLint only uses one. The priority order is as follows:
 
-```json
+```console
 .eslintrc.js
 .eslintrc.cjs
 .eslintrc.yaml
@@ -10,6 +10,7 @@ If there are multiple configuration files in the same directory, ESLint only use
 .eslintrc.json
 package.json
 ```
+
 
 #### Using Configuration Files
 
